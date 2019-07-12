@@ -1,0 +1,44 @@
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+@import '~bootstrap-css-only/css/bootstrap.min.css';
+@import '~mdbreact/dist/css/mdb.css';
+@import url("https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic");
+
+#homepage {
+    .view {
+        background-image: url('/assets/images/coin.jpeg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        height: 100vh;
+      }
+
+      .gradient {
+        background: -webkit-linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%);
+        background: -webkit-gradient(linear, 45deg, from(rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%));
+        background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%);
+      }
+      .card {
+        background-color: rgba(126, 123, 215, 0.2);
+      }
+    h6 {
+    line-height: 1.7;
+    }
+    
+    .navbar {
+    transition: background .5s ease-in-out,padding .5s ease-in-out;
+    }
+    
+    .top-nav-collapse {
+    background: #424f95 !important;
+    }
+    label {
+        color: #fff!important;
+      }
+}
+  
+  @media (max-width: 768px) {
+    #homepage .navbar:not(.top-nav-collapse) {
+        background: #424f95 !important;
+    }
+  }

@@ -1,0 +1,146 @@
+.home-bg-image{
+    width: 100%;
+    min-height: 500px;
+    background-image: url('../images/3accounting-budget-calculate-3305.jpg');   
+    background-repeat: no-repeat, repeat;
+    background-color: #cccccc;
+    background-size: cover;
+    margin-top: -120px;
+}
+.interest-calc-form{
+    position: relative;
+    top: 100px;
+}
+.login-form{
+    position: relative;
+    top: 70px;
+}
+
+
+.home-overlay{
+    min-height: 550px;
+    /* top: 50px !important; */
+}
+.home-banner{
+    margin-top: 165px;
+    height: 300px !important;
+    margin-bottom: 20px;
+    height: auto;
+}
+.application-form *, .application-form label {
+    color: firebrick;
+    border-color: firebrick;
+}
+.signup-overlay{
+    left: 0% !important;
+}
+.message-category{
+    background-color: rgb(243, 243, 243);
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.message-category ul{
+    text-align: left;
+    padding: 0px;
+}
+
+.message-category ul li{
+    list-style-type: none;
+    padding: 5px;
+}
+.active-category{
+    background-color: gainsboro;
+    border: .3px solid gray;
+    border-left: none;
+    border-right: none;
+}
+
+.category-content{
+    height: 400px;
+    background-color: rgb(252, 252, 252);
+    margin-top: 20px;
+}
+
+.category-content *{
+    color: firebrick;
+    border-color: firebrick;
+}
+
+.category-content .body{
+    margin-top: 20px;
+}
+
+.category-content textarea{
+    color: firebrick;
+    border-color: firebrick;
+}
+
+.category-content .action{
+    margin-top: 30px;
+}
+.category-content .action *{
+    float: right;
+}
+
+
+.search-box {
+    width: 100%;
+    float: right;
+    border: unset;
+    border: 1px solid rgb(212, 212, 212);
+    margin-top: 20px;
+    color: firebrick;
+    position: relative;
+}
+.search-box * {
+   color: firebrick;
+}
+.search-box input:focus{
+    border-bottom: 1px solid purple;
+    width: 100%;
+    outline: none;
+    transition: all 0.5s linear;
+}
+
+.search-box::after{
+    content: ' ';
+    display: table;
+    clear: both;
+}
+.search-box input::placeholder{
+    color: firebrick;
+}
+.search-icon {
+    position: absolute;
+    right: 0px;
+    display: block;
+    height: 100%;
+    width: 40px;
+    text-align: center;
+    background-color: rgb(216, 216, 216);
+}
+
+/* .search-icon:hover {
+    background-color: rgb(216, 216, 216);
+} */
+
+.search-icon i {
+    font-size: 25px;
+    color: purple;
+}
+
+@media only screen and (min-width: 720px) {
+    .interest-calc-form{
+        left: 100px;
+    }
+
+    /* .home-banner{
+        margin-top: 0px;
+        height: 160px !important;
+    } */
+}
+
+
+  
