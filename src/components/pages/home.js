@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBMask, MDBRow, MDBCol, MDBIcon,
-  MDBBtn, MDBView, MDBContainer, MDBCard, MDBCardBody, MDBInput, MDBFormInline, MDBTabPane, MDBTabContent, MDBNav } from "mdbreact";
-import "../assests/scss/style";
-import LoginForm from './forms/loginForm';
+import { MDBNavbar, MDBNavbarBrand, MDBMask, MDBRow, MDBCol, MDBBtn, MDBView, MDBContainer } from "mdbreact";
+import "../../assests/scss/style";
+import { LoginForm, SignupForm } from '../forms';
+import Tabs from '../tabs/tabs';
 
 class homepage extends Component {
   state = {
@@ -46,22 +46,14 @@ class homepage extends Component {
                   </MDBBtn>
                 </div>
                 <MDBCol md="6" xl="5" className="mb-4">
-                    <ul className="nav nav-pills">
-                        <li className="nav-item">
-                        {/* <Link to={`/users/${user.id}`} activeClassName="active">{user.name}</Link> */}
-                            <a className="nav-link active" href="#">Active</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Link</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Link</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link disabled" href="#">Disabled</a>
-                        </li>
-                    </ul>
-                    <LoginForm />
+                    <Tabs>
+                        <div label="signup">
+                            <SignupForm />
+                        </div>
+                        <div label="login">
+                            <LoginForm />
+                        </div>
+                    </Tabs>
                 </MDBCol>
               </MDBRow>
             </MDBContainer>
