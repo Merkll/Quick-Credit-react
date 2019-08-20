@@ -1,20 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import { MDBNavbar, MDBNavbarBrand, MDBMask, MDBRow, MDBCol, MDBBtn, MDBView, MDBContainer } from "mdbreact";
+
 import "../../assests/scss/style";
+
 import { LoginForm, SignupForm } from '../forms';
 import Tabs from '../tabs/tabs';
 
-class homepage extends Component {
-  state = {
-    collapseID: ""
-  };
-
-  toggleCollapse = collapseID => () =>
-    this.setState(prevState => ({
-      collapseID: prevState.collapseID !== collapseID ? collapseID : ""
-    }));
-
-  render() {
+export default () =>  {
     return (
       <div id="homepage">
           <div>
@@ -61,7 +53,4 @@ class homepage extends Component {
         </MDBView>
       </div>
     );
-  }
 }
-
-export default homepage;

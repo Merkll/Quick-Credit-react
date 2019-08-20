@@ -4,7 +4,9 @@
 @import url("https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700");
 @import url("https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic");
 
-// $hover: 
+$hoverBackground: #ededed; 
+$activeLinkColor: firebrick;
+$primaryTextColor: white;
 
 #homepage {
     .view {
@@ -61,14 +63,14 @@
 }
 
 #sidebar {
-    // width: 250px;
+    width: 220px;
     position: fixed;
-    // padding: 10px;
+    padding: 10px;
     top: 0;
     left: 0;
     height: 100vh;
     z-index: 999;
-    background: #7386D5;
+    background: rgb(43, 42, 42);
     color: #fff;
     transition: all 0.3s;
 }
@@ -80,14 +82,40 @@
 tbody {
     tr {
         &:hover{
-            background-color: #ededed;
+            background-color: $hoverBackground;
         }
-    }
-    .card-container {
-        margin-top: 1.5rem;
     }
 }
 
+.content {
+    margin-top: 1.5rem;
+}
+
+a {
+    color: $primaryTextColor;
+    &:hover {
+        color: $activeLinkColor;
+    }
+}
+
+.list-unstyled {
+    li {
+        display: block;
+        padding: 5px;
+        &:hover {
+            background-color: $hoverBackground;
+        }
+        a {
+            display: block;
+            padding: 5px;
+        }
+        > .currentLink{
+            color: $activeLinkColor;
+            background-color: $hoverBackground;
+            font-weight: bolder;
+        }
+    }
+}
 
 
 .pb-2, .py-2 {
