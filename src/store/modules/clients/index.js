@@ -1,17 +1,42 @@
+/* eslint-disable no-empty */
 import { call, put, takeLatest } from 'redux-saga/effects';
 
 import {
-  GET_ALL_CLIENTS, GET_CLIENTS_SUCESS, GET_CLIENTS_FAILURE, GET_SINGLE_CLIENT, UPDATE_SINGLE_CLIENT
+  GET_ALL_CLIENTS, GET_CLIENTS_SUCESS, GET_CLIENTS_FAILURE, GET_SINGLE_CLIENT
 } from './types';
 
 import API from './requests';
 
-export const getAllClients = (payload) => ({ type: GET_ALL_CLIENTS, payload });
-export const getSingleClient = (payload) => ({ type: GET_SINGLE_CLIENT, payload });
-export const updateSingleClient = (payload) => ({ type: UPDATE_SINGLE_CLIENT, payload });
 export const getClientsFailure = (payload) => ({ type: GET_CLIENTS_FAILURE, payload });
 export const getClientsSucess = (payload) => ({ type: GET_CLIENTS_SUCESS, payload });
 
+
+export const updateSingleClient = (payload) => async (dispatch) => {
+  try {
+    const { data } = await API.verifyClient(payload);
+
+    dispatch(getClientsSucess({ ...payload, client: data }));
+  } catch (error) {
+  }
+};
+
+export const getAllClients = (payload) => async (dispatch) => {
+  try {
+    const { data } = await API.getAllClients();
+
+    dispatch(getClientsSucess({ ...payload, clients: data }));
+  } catch (error) {
+  }
+};
+
+export const getSingleClient = (payload) => async (dispatch) => {
+  try {
+    const { data } = await API.getSingleClient(payload);
+
+    dispatch(getClientsSucess({ ...payload, client: data }));
+  } catch (error) {
+  }
+};
 
 export function* clientsWorker(action) {
   try {

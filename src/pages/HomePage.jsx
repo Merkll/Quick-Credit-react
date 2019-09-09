@@ -2,9 +2,10 @@
 // react libraries
 import React, { Component } from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import Form from 'components/Form';
+import Message from 'components/Message';
 
 import { loginUser } from 'modules/auth';
 
@@ -46,10 +47,17 @@ class HomePage extends Component {
   }
 
   render() {
-    const { auth: { message } } = this.props;
+    const { message: { message }, auth: { data = {} }, location: { search } } = this.props;
+    const params = new URLSearchParams(search);
+    const logout = params.get('logout') === 'true';
+    console.log(logout);
+
+    if (logout) Storage.removeItem('user');
 
     return (
       <>
+        {!logout && data.id && <Redirect to="/client" />}
+        <Message />
         <div className="container">
           <div className="menu">
             <a href="./index.html"><span className="logo">Quick Credit</span></a>

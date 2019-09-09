@@ -2,7 +2,7 @@
 // react libraries
 import React, { Component } from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import Form from 'components/Form';
 
@@ -12,6 +12,8 @@ import validations from 'validations/auth';
 
 // utils
 import connect from 'utils/connect';
+
+import Message from 'components/Message';
 
 import 'scss/home';
 
@@ -82,10 +84,11 @@ class SignupPage extends Component {
   }
 
   render() {
-    const { auth: { message } } = this.props;
-
+    const { auth: { data = {} }, message: { message } } = this.props;
     return (
       <>
+        <Message />
+        {data.id && <Redirect to="/client" />}
         <div className="container">
           <div className="menu">
             <a href="./index.html"><span className="logo">Quick Credit</span></a>

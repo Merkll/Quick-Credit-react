@@ -51,7 +51,7 @@ export class PasswordResetComponent extends React.Component {
           <span>Fill in your loan details </span>
           <span>We will get Back to you</span>
 
-          <Form fields={this.fields} buttonText="Apply" onSubmit={this.handleSubmit} validationRule={loanApplication} />
+          <Form doneLoading fields={this.fields} buttonText="Apply" onSubmit={this.handleSubmit} validationRule={loanApplication} />
         </div>
       </>
     );

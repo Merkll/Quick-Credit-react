@@ -1,11 +1,11 @@
 import http from 'utils/http';
 
 export default {
-  signUp: async ({ email }) => http.post('/auth/reset_password', {
-    email
+  signUp: async (body) => http.post('/auth/signup', {
+    ...body
   }),
 
-  login: async ({ password, id, token }) => http.patch(`/auth/update_password/${id}/${token}`, {
-    password
+  login: async (body) => http.post('/auth/signin', {
+    ...body
   })
 };

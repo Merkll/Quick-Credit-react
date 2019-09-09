@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // react libraries
 import React from 'react';
 
@@ -6,11 +7,13 @@ import PropTypes from 'prop-types';
 
 // helper functions
 import classNames from 'utils/classnames';
+import connect from 'utils/connect';
+import { clearAlertMessage } from 'modules/message';
 
 // styles
 import './Message.scss';
 
-export default class Message extends React.Component {
+class Message extends React.Component {
   static propTypes = {
     heading: PropTypes.string,
     messages: PropTypes.arrayOf(PropTypes.string),
@@ -40,19 +43,31 @@ export default class Message extends React.Component {
 
   componentDidUpdate() {
     const { active } = this.state;
-    const { delay } = this.props;
+    const { delay, clearAlertMessageDispatch } = this.props;
 
-    if (active) setTimeout(() => this.setState({ close: true }), delay * 1000);
+    if (active) {
+      setTimeout(() => {
+        this.setState({ close: true });
+        clearAlertMessageDispatch();
+      }, delay * 1000);
+    }
   }
 
-  static getDerivedStateFromProps({ active }, prevState) {
+  static getDerivedStateFromProps(props, prevState) {
+    const { message } = props;
+    let { active } = props;
+
+    active = message.active ? message.active : active;
+
     return prevState.close ? { active: false, close: false } : { active };
   }
 
   onMessageClose = () => this.setState({ close: true });
 
   render() {
-    const { heading, messages, error } = this.props;
+    const {
+ heading, messages, error, message: { message } 
+} = this.props;
     const { active } = this.state;
 
     const classList = classNames('ui', { error }, 'message');
@@ -63,10 +78,10 @@ export default class Message extends React.Component {
           <div className={classList}>
             <i role="presentation" className="close icon" onKeyPress={this.onMessageClose} onClick={this.onMessageClose} />
             <div className="header">
-              {heading}
+              {heading || message}
             </div>
             <ul className="list">
-              {messages.map((message) => <li key={message}>{message}</li>)}
+              {messages.map((msg) => <li key={msg}>{msg}</li>)}
             </ul>
           </div>
         )}
@@ -74,3 +89,5 @@ export default class Message extends React.Component {
     );
   }
 }
+
+export default connect({ clearAlertMessageDispatch: clearAlertMessage })(Message);

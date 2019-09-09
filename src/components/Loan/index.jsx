@@ -70,8 +70,8 @@ class Loans extends React.Component {
                 <input type="text" value={loan.paymentInstallment} disabled />
               </div>
             </div>
-            {isAdmin && (loan.status === 'pending') && <button type="button" onClick={this.postRepayment} className="btn float-right overlay-btn client-action">Verify</button>}
-            {isAdmin && (loan.status === 'verified' || loan.status === 'rejected') && <button type="button" onClick={this.verifyLoan} className="btn float-right overlay-btn client-action">Post Repayment</button>}
+            {isAdmin && (loan.status === 'pending') && <button type="button" onClick={this.verifyLoan} className="btn float-right overlay-btn client-action">Verify</button>}
+            {isAdmin && (loan.status === 'approved') && <button type="button" onClick={this.postRepayment} className="btn float-right overlay-btn client-action">Post Repayment</button>}
           </div>
 
           <Repayments loan={params.id} />

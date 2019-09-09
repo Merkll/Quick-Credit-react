@@ -9,6 +9,7 @@ import { getSingleClient, updateSingleClient } from 'modules/clients';
 class Loans extends React.Component {
   componentDidMount() {
     const { match: { params }, getClientDispatch } = this.props;
+    console.log(params);
 
     getClientDispatch(params);
   }
@@ -20,9 +21,9 @@ class Loans extends React.Component {
   }
 
   approveClient = () => {
-    const { updateSingleClientDispatch } = this.props;
+    const { updateSingleClientDispatch, match: { params } } = this.props;
 
-    updateSingleClientDispatch({ status: 'approved' });
+    updateSingleClientDispatch(params);
   }
 
   render() {
@@ -39,11 +40,11 @@ class Loans extends React.Component {
             <div className="input-group">
               <div className="input-wrapper">
                 <label htmlFor="" className="">First Name</label>
-                <input type="text" value={client.firstName} disabled="" readOnly />
+                <input type="text" value={client.firstname} disabled="" readOnly />
               </div>
               <div className="input-wrapper">
                 <label htmlFor="" className="">Last Name</label>
-                <input type="text" value={client.lastName} disabled="" readOnly />
+                <input type="text" value={client.lastname} disabled="" readOnly />
               </div>
             </div>
             <div className="input-group">
@@ -60,7 +61,6 @@ class Loans extends React.Component {
               <label htmlFor="" className="">Address</label>
               <input type="text" value={client.address} disabled="" readOnly />
             </div>
-            {(client.status === 'unverified' || client.status === 'approved') && <button type="button" onClick={this.rejectClient} className="btn float-right overlay-btn client-action">Reject</button>}
             {(client.status === 'unverified' || client.status === 'rejected') && <button type="button" onClick={this.approveClient} className="btn float-right overlay-btn client-action">Approve</button>}
           </div>
         </div>
@@ -69,4 +69,6 @@ class Loans extends React.Component {
   }
 }
 
-export default connect({ getClientDispatch: getSingleClient, updateSingleClientDispatch: updateSingleClient })(Loans);
+export default connect({
+  getClientDispatch: getSingleClient, updateSingleClientDispatch: updateSingleClient
+})(Loans);

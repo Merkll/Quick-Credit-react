@@ -1,14 +1,42 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 
+
+import { FAILURE_MESSAGE_ALERT } from 'modules/message/types';
+
 import {
-  USER_LOGIN_REQUEST, USER_SIGNUP_REQUEST, USER_AUTH_SUCESS, USER_AUTH_FAILURE
+  USER_LOGIN_REQUEST, USER_AUTH_SUCESS, USER_AUTH_FAILURE
 } from './types';
+
+import Storage from '../../../storage';
 
 import API from './requests';
 
-export const loginUser = (payload) => ({ type: USER_LOGIN_REQUEST, payload });
-export const signUpUser = (payload) => ({ type: USER_AUTH_SUCESS, payload });
+export const loginUser = (payload) => async (dispatch) => {
+  try {
+    const { data } = await API.login(payload);
+
+    Storage.setItem('user', data);
+
+    dispatch({ type: USER_AUTH_SUCESS, payload: { data } });
+  } catch (error) {
+    dispatch({ type: FAILURE_MESSAGE_ALERT, payload: { ...error } });
+  }
+};
+
+export const signUpUser = (payload) => async (dispatch) => {
+  try {
+    const { data } = await API.signUp(payload);
+
+    Storage.setItem('user', data);
+
+    dispatch({ type: USER_AUTH_SUCESS, payload: { data } });
+  } catch (error) {
+    dispatch({ type: FAILURE_MESSAGE_ALERT, payload: { ...error } });
+  }
+};
+
 export const authFailure = (payload) => ({ type: USER_AUTH_FAILURE, payload });
+
 export const authSucess = (payload) => ({ type: USER_AUTH_SUCESS, payload });
 
 
@@ -33,11 +61,10 @@ export function* watchLoginRequest() {
   yield takeLatest(USER_LOGIN_REQUEST, loginUserWorker);
 }
 
-export function* watchSignUpRequest() {
-  yield takeLatest(USER_SIGNUP_REQUEST, loginUserWorker);
-}
 
-export default (state = {}, action) => {
+const initialState = { data: Storage.getItem('user') || {} };
+
+export default (state = initialState, action) => {
   const { payload } = action;
   switch (action.type) {
   case USER_AUTH_SUCESS:

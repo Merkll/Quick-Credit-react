@@ -37,7 +37,7 @@ class Clients extends React.Component {
       >
         <span>
           Name
-          <i>{`${client.firstName} ${client.lastName}`}</i>
+          <i>{`${client.firstname} ${client.lastname}`}</i>
         </span>
         <span>
           Email
@@ -47,7 +47,7 @@ class Clients extends React.Component {
           Loans
           <i>loans</i>
         </span>
-        <Link to={`/admin/clients/${client.id}`}>View Client</Link>
+        <Link to={`/admin/clients/${client.email}`}>View Client</Link>
       </Card>
     ));
   }

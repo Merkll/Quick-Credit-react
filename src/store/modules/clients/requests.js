@@ -1,15 +1,7 @@
 import http from 'utils/http';
 
-import { users as clients } from 'fixtures/';
-
 export default {
-  getAllClients: async () => {
-    return { clients };
-  },
-
-  getSingleClient: async ({ id }) => {
-    const client = clients.find((singleLoan) => singleLoan.id === id);
-
-    return { client };
-  },
+  getAllClients: async () => http.get('/users'),
+  getSingleClient: async ({ email }) => http.get(`/users/${email}`),
+  verifyClient: async ({ email }) => http.patch(`/users/${email}/verify`),
 };

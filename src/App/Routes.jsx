@@ -10,13 +10,15 @@ import SignupPage from 'pages/SignupPage';
 import NotFoundPage from 'pages/NotFoundPage';
 
 const Routes = () => (
-  <Switch>
-    <Route exact path="/" component={HomePage} />
-    <Route exact path="/signup" component={SignupPage} />
-    <Route path="/admin" component={AdminPage} />
-    <Route path="/client" component={ClientsPage} />
-    <Route component={NotFoundPage} />
-  </Switch>
+  <>
+    <Switch>
+      <Route exact path="/" component={HomePage} />
+      <Route exact path="/signup" component={SignupPage} />
+      <Route path="/admin" component={AdminPage} />
+      <Route path="/client" component={ClientsPage} />
+      <Route component={NotFoundPage} />
+    </Switch>
+  </>
 );
 
 export default Routes;

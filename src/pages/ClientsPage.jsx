@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 // react libraries
 import React, { Component } from 'react';
-import { Switch, Route, NavLink, Redirect } from 'react-router-dom';
+import { Switch, Route, NavLink, Redirect, Link } from 'react-router-dom';
 
 import Sidebar from 'components/Sidebar';
 import DashBoard from 'pages/Dashboard';
@@ -10,6 +10,8 @@ import Loan from 'components/Loan';
 import LoanApplication from 'components/LoanApplication';
 import Clients from 'components/Clients';
 import Client from 'components/Client';
+import Message from 'components/Message';
+
 
 // utils
 import connect from 'utils/connect';
@@ -29,11 +31,19 @@ class AdminPage extends Component {
   componentDidMount() {}
 
   render() {
-    const { isAdmin } = Storage.getItem('user') || {};
+    const { isadmin, id } = Storage.getItem('user') || {};
     return (
       <>
-        {isAdmin && <Redirect to="/admin" />}
+        {isadmin && <Redirect to="/admin" />}
+        {!id && <Redirect to="/" />}
+        <Message />
         <div className="container-fluid">
+          <div className="menu">
+            <a href="./index.html"><span className="logo">Quick Credit</span></a>
+            <nav>
+              <Link to="/?logout=true">Logout</Link>
+            </nav>
+          </div>
           <div className="row">
             <div className="col-2">
               <Sidebar heading="Admin">

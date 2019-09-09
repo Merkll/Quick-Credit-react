@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 // react libraries
 import React, { Component } from 'react';
-import { Switch, Route, NavLink, Redirect } from 'react-router-dom';
+import { Switch, Route, NavLink, Redirect, Link } from 'react-router-dom';
 
 import Sidebar from 'components/Sidebar';
 import DashBoard from 'pages/Dashboard';
@@ -9,6 +9,7 @@ import Loans from 'components/Loans';
 import Loan from 'components/Loan';
 import Clients from 'components/Clients';
 import Client from 'components/Client';
+import Message from 'components/Message';
 
 // utils
 import connect from 'utils/connect';
@@ -28,12 +29,21 @@ class AdminPage extends Component {
   componentDidMount() {}
 
   render() {
-    const { isAdmin } = Storage.getItem('user') || {};
+    const { isadmin } = Storage.getItem('user') || {};
+
+    console.log(Storage.getItem('user'));
 
     return (
       <>
-        {!isAdmin && <Redirect to="/client" />}
+        {!isadmin && <Redirect to="/client" />}
+        <Message />
         <div className="container-fluid">
+          <div className="menu">
+            <a href="./index.html"><span className="logo">Quick Credit</span></a>
+            <nav>
+              <Link to="/?logout=true">Logout</Link>
+            </nav>
+          </div>
           <div className="row">
             <div className="col-2">
               <Sidebar heading="Admin">
@@ -54,7 +64,7 @@ class AdminPage extends Component {
                 <Route exact path="/admin/clients" render={() => <Clients title="Clients" />} />
                 <Route exact path="/admin/loans" render={() => <Loans title="Loans" />} />
                 <Route exact path="/admin/loans/:id" render={(props) => <Loan {...props} isAdmin />} />
-                <Route exact path="/admin/clients/:id" render={(props) => <Client {...props} />} />
+                <Route exact path="/admin/clients/:email" render={(props) => <Client {...props} />} />
               </Switch>
             </div>
           </div>

@@ -5,9 +5,11 @@ import { combineReducers } from 'redux';
 import auth from 'modules/auth';
 import loans from 'modules/loans';
 import clients from 'modules/clients';
+import message from 'modules/message';
 
 export default combineReducers({
   auth,
   loans,
-  clients
+  clients,
+  message
 });
