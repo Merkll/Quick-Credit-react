@@ -1,0 +1,85 @@
+@import '~bootstrap-css-only/css/bootstrap.min.css';
+@import 'assets/css/style';
+@import 'assets/css/quick-credit';
+@import 'assets/css/responsive';
+@import 'assets/css/animation';
+@import 'assets/css/table';
+
+$hoverBackground: #ededed; 
+$activeLinkColor: firebrick;
+$primaryTextColor: white;
+$purple: purple;
+
+.sidebar {
+  li {
+    list-style-type: none;
+  }
+}
+
+.border {
+  &-left {
+    &-purple {
+        border-left: 0.25rem solid $purple !important;
+    }
+  }
+}
+
+.button-link {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.password-reset {
+  width: 100% !important;
+}
+
+.ui.button {
+  background-color: $purple !important;
+}
+
+
+
+
+element.style {
+  width: 100% !important;
+}
+.container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  /* margin-bottom: -50px; */
+  display: inline-block;
+}
+body, html, .container {
+  min-height: 100%;
+}
+
+@media (min-width: 1200px){
+  .container {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 992px){
+.container {
+  max-width: 100%;
+}
+}
+@media (min-width: 768px){
+  .container {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 576px){
+  .container {
+    max-width: 100%;
+  }
+}

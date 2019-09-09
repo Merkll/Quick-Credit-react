@@ -1,0 +1,5 @@
+{
+  "*.js": "npm run lint:js",
+  "*.jsx": "npm run lint:jsx",
+  "*.scss": "npm run lint:scss"
+}
