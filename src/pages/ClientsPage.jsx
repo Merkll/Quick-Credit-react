@@ -1,15 +1,13 @@
 /* eslint-disable react/jsx-props-no-spreading */
 // react libraries
 import React, { Component } from 'react';
-import { Switch, Route, NavLink, Redirect, Link } from 'react-router-dom';
+import {
+  Switch, Route, Redirect, Link
+} from 'react-router-dom';
 
-import Sidebar from 'components/Sidebar';
-import DashBoard from 'pages/Dashboard';
 import Loans from 'components/Loans';
 import Loan from 'components/Loan';
 import LoanApplication from 'components/LoanApplication';
-import Clients from 'components/Clients';
-import Client from 'components/Client';
 import Message from 'components/Message';
 
 
@@ -31,31 +29,24 @@ class AdminPage extends Component {
   componentDidMount() {}
 
   render() {
-    const { isadmin, id } = Storage.getItem('user') || {};
+    const { isadmin, id, ...data } = Storage.getItem('user') || {};
+    const { firstname = '', lastname = '' } = data;
     return (
       <>
         {isadmin && <Redirect to="/admin" />}
         {!id && <Redirect to="/" />}
         <Message />
         <div className="container-fluid">
-          <div className="menu">
+          <div className="menu client">
             <a href="./index.html"><span className="logo">Quick Credit</span></a>
             <nav>
-              <Link to="/?logout=true">Logout</Link>
+              <button className="link" type="button">{`${firstname} ${lastname}`}</button>
+              <Link to="/client">Loans</Link>
+              <Link to="/logout">Logout</Link>
             </nav>
           </div>
           <div className="row">
-            <div className="col-2">
-              <Sidebar heading="Admin">
-                <li>
-                  <NavLink to="/client" activeClassName="currentLink">Loans</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/client/apply" activeClassName="currentLink">Loan Application</NavLink>
-                </li>
-              </Sidebar>
-            </div>
-            <div className="col-9 content">
+            <div className="col-11 content">
               <Switch>
                 <Route exact path="/client" render={() => <Loans title="Loans" basePath="client" />} />
                 <Route exact path="/client/apply" render={() => <LoanApplication title="Clients" />} />

@@ -66,8 +66,8 @@ class Message extends React.Component {
 
   render() {
     const {
- heading, messages, error, message: { message } 
-} = this.props;
+      heading, messages, error, message: { message }
+    } = this.props;
     const { active } = this.state;
 
     const classList = classNames('ui', { error }, 'message');

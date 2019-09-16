@@ -28,10 +28,6 @@ class SideBar extends React.Component {
           </button>
 
           <div className="sidebar">
-            <span className="account-name">
-              Hi,
-              {`${firstname} ${lastname}`}
-            </span>
             {sidebarListItems}
           </div>
         </>

@@ -9,6 +9,7 @@ import CardContainer from 'components/CardContainer';
 import Card from 'components/Card';
 
 import { getAllLoans } from 'modules/loans';
+// utils
 
 class Loans extends React.Component {
   componentDidMount() {
@@ -21,7 +22,7 @@ class Loans extends React.Component {
     const { loans: { loans = [] }, viewLoan, basePath } = this.props;
 
     return loans.map((loan) => (
-      <Card key={loan.id} header={<button className="button-link" type="button" onClick={() => viewLoan(loan.id)}><span>{loan.id}</span></button>}>
+      <Card key={loan.id} header={<button className="button-link" type="button" onClick={() => viewLoan(loan.id)}><span>{loan.purpose}</span></button>}>
         <span>
           Status
           <i>{loan.status}</i>
@@ -60,11 +61,20 @@ class Loans extends React.Component {
   }
 
   render() {
-    const { children, title } = this.props;
+    const { children, title, basePath } = this.props;
+
     return (
       <>
         <div className="page-title">
           <span>{ title }</span>
+          {basePath === 'client' && (
+            <Link to="/client/apply" className="loan-application">
+              {' '}
+              <div role="presentation" className="ui labeled icon button">
+                <i className="add icon" />
+              </div>
+            </Link>
+          )}
         </div>
         <CardContainer>
           {this.Loans}

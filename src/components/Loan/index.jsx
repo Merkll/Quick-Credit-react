@@ -39,10 +39,7 @@ class Loans extends React.Component {
     return (
       <>
         <div className="page-title">
-          <span>
-            <i>{loan.id}</i>
-          </span>
-          <span className="float-right color-grey"><i>{loan.status}</i></span>
+          <span className="float-right color-grey"><i>{loan.purpose}</i></span>
         </div>
         <div className="details">
           <div className="form">

@@ -1,7 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
 // react libraries
 import React, { Component } from 'react';
-import { Switch, Route, NavLink, Redirect, Link } from 'react-router-dom';
+import {
+  Switch, Route, NavLink, Redirect, Link
+} from 'react-router-dom';
 
 import Sidebar from 'components/Sidebar';
 import DashBoard from 'pages/Dashboard';
@@ -29,9 +31,9 @@ class AdminPage extends Component {
   componentDidMount() {}
 
   render() {
-    const { isadmin } = Storage.getItem('user') || {};
+    const { isadmin, ...data } = Storage.getItem('user') || {};
 
-    console.log(Storage.getItem('user'));
+    const { firstname = '', lastname = '' } = data;
 
     return (
       <>
@@ -41,7 +43,8 @@ class AdminPage extends Component {
           <div className="menu">
             <a href="./index.html"><span className="logo">Quick Credit</span></a>
             <nav>
-              <Link to="/?logout=true">Logout</Link>
+              <button className="link" type="button">{`${firstname} ${lastname}`}</button>
+              <Link to="/logout">Logout</Link>
             </nav>
           </div>
           <div className="row">
