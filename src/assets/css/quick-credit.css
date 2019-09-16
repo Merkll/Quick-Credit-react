@@ -80,6 +80,7 @@ body{
     float: left;
     padding: 15px;
     padding-top: 0px;
+    padding-left: 0px;
 }
 [class*="col-"]::after{
     content: " ";
@@ -317,6 +318,7 @@ textarea {
 .btn{
     min-width: 100px;
     height: 25px;
+    height: 30px;
     border: none;
     background-color: var(--btn-color);
     color: white;
@@ -328,8 +330,11 @@ textarea {
 }
 
 .form{
-    margin-bottom: 50px;
-    padding: 10px;
+    margin-bottom: 0px;
+    padding: 0px;
+    /* box-shadow: 3px 2px rgb(226, 226, 226); */
+    /* margin-bottom: 50px;
+    padding: 10px; */
     /* box-shadow: 3px 2px rgb(226, 226, 226); */
 }
 .form-selection{
@@ -354,7 +359,7 @@ textarea {
 .menu{
     position: relative;
     height: 50px;
-    background-color: var(--primary-bg-color);
+    background-color: white;
     z-index: 10;
 }
 .menu nav{
@@ -370,8 +375,17 @@ textarea {
     content: " ";
     clear: both;
 }
+button.link{
+  border: none;
+  color: purple;
+  color: purple;
+  font-weight: bolder;
+  text-decoration: none;
+  font-size: 14px;
+}
 .menu nav a {
     color: white;
+    color: purple;
     font-weight: bolder;
     text-decoration: none;
     font-size: 17px;
@@ -382,7 +396,7 @@ textarea {
 }
 .logo{
     display: inline-block;
-    color: var(--logo-color);
+    color: var(--wave-bg-color);
     font-weight: bolder;
     font-size: 20px;
     padding: 10px;
@@ -390,6 +404,8 @@ textarea {
 
 .sidebar{
     height: 100%;
+    height: 200%;
+    height: 1000px;
     background-color: var(--sidebar-color);
     padding: 10px;
     color: white;
@@ -443,6 +459,7 @@ textarea {
     /* display: none; */
 }
 .page-title span{
+    display: contents;
     color: firebrick;
     font-size: 20px;
     font-weight: bold;
@@ -461,7 +478,6 @@ textarea {
     height: inherit;
 }
 .card{
-    height: 300px;
     width: 230px;
     margin: auto;
     margin-bottom: 20px;
@@ -470,7 +486,8 @@ textarea {
 }
 .card-header{
     padding: 5px;
-    margin-bottom: 30px;
+    padding: 0px;
+    margin-bottom: 0px;
 }
 .card-header span:nth-child(1){
     float: left;
@@ -494,17 +511,18 @@ textarea {
 
 } */
 .card-content{
-    padding: 5px;
+    padding: 3px;
 }
 .card-content span{
     display: block;
     color: firebrick;
     font-weight: 500;
+    line-height: 24px;
 }
 
 .card-content span i{
     color: gray;
-    font-size: 14px;
+    font-size: 13px;
 }
 .card-content span i::before{
    content: ":";
@@ -519,8 +537,8 @@ textarea {
     font-size: 16px;
     padding: 3px;
     float: right;
-    position: relative;
-    bottom: -50px;
+    /* position: relative; */
+    /* bottom: -50px; */
 }
 .card-content  a:nth-of-type(1){
     float: right;
@@ -667,18 +685,9 @@ textarea {
 }
 
 .icon.close::after{
-    content: '\02613';
+    /* content: '\02613'; */
 }
-.loader{
-    border: 16px solid #f3f3f3;
-    /* border-radius: 50%; */
-    border: 10px solid firebrick;
-    width: 50px;
-    height: 50px;
-    position: relative;
-    top: 50%;
-    left: 40%;
-}
+
 .bg-red{
     background-color: firebrick
 }

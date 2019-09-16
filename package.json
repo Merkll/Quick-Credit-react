@@ -1,7 +1,7 @@
 {
-  "name": "vali-ah-frontend",
+  "name": "quick-credit",
   "version": "1.0.0",
-  "description": "The one-stop shop for all the self-help ideas you need.",
+  "description": "Quick credit.",
   "main": "index.jsx",
   "scripts": {
     "start": "node ./app",
@@ -21,21 +21,7 @@
     "storybook": "start-storybook -p 6006",
     "build:storybook": "build-storybook -c .storybook -s public -o storybook-static"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/andela/vali-ah-frontend.git"
-  },
-  "keywords": [
-    "1kbideas",
-    "positivity",
-    "community"
-  ],
-  "author": "Team-vali",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/andela/vali-ah-frontend/issues"
-  },
-  "homepage": "https://github.com/andela/vali-ah-frontend#readme",
   "dependencies": {
     "axios": "^0.19.0",
     "babel-polyfill": "^6.26.0",
@@ -128,11 +114,5 @@
     "webpack-cli": "^3.3.7",
     "webpack-dev-server": "^3.8.0",
     "webpack-merge": "^4.2.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && npm run test:unit && npm run test:e2e:dev",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   }
 }

@@ -18,7 +18,7 @@ class Clients extends React.Component {
   }
 
   get Clients() {
-    const { clients: { clients = [] }, viewLoan } = this.props;
+    const { clients: { clients = [] } } = this.props;
 
     return clients.map((client) => (
       <Card
@@ -26,9 +26,8 @@ class Clients extends React.Component {
         header={
           (
             <>
-              <span>{client.id}</span>
+              <span>status</span>
               <span>
-                status
                 {client.status}
               </span>
             </>
@@ -44,8 +43,8 @@ class Clients extends React.Component {
           <i>{client.email}</i>
         </span>
         <span>
-          Loans
-          <i>loans</i>
+          Phone
+          <i>{client.phone}</i>
         </span>
         <Link to={`/admin/clients/${client.email}`}>View Client</Link>
       </Card>

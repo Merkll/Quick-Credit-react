@@ -1,8 +1,6 @@
 /* eslint-disable no-empty */
-import { call, put, takeLatest } from 'redux-saga/effects';
-
 import {
-  GET_ALL_CLIENTS, GET_CLIENTS_SUCESS, GET_CLIENTS_FAILURE, GET_SINGLE_CLIENT
+  GET_CLIENTS_SUCESS, GET_CLIENTS_FAILURE
 } from './types';
 
 import API from './requests';
@@ -37,31 +35,6 @@ export const getSingleClient = (payload) => async (dispatch) => {
   } catch (error) {
   }
 };
-
-export function* clientsWorker(action) {
-  try {
-    const passwordResetResponse = yield call(API.getAllClients, action.payload);
-
-    yield put(getClientsSucess({ ...action.payload, ...passwordResetResponse }));
-  } catch (error) {
-    yield put(getClientsFailure({ ...error }));
-  }
-}
-
-export function* getSingleClientWorker(action) {
-  try {
-    const passwordResetResponse = yield call(API.getSingleClient, action.payload);
-
-    yield put(getClientsSucess({ ...action.payload, ...passwordResetResponse }));
-  } catch (error) {
-    yield put(getClientsFailure({ ...error }));
-  }
-}
-
-export function* watchAllClientsRequest() {
-  yield takeLatest(GET_ALL_CLIENTS, clientsWorker);
-  yield takeLatest(GET_SINGLE_CLIENT, getSingleClientWorker);
-}
 
 export default (state = { Clients: [] }, action) => {
   const { payload = {} } = action;

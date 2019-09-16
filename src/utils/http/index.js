@@ -32,7 +32,7 @@ http.interceptors.response.use(
     const { error: err } = response?.data;
 
     return Promise.reject(
-      new ResponseError({ ...err, message: err?.message || error.message, status: response?.status })
+      new ResponseError({ ...err, message: err || error.message, status: response?.status })
     );
   }
 );
