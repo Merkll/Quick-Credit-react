@@ -23,5 +23,4 @@ class App extends React.Component {
     }
 }
 
-
 DOM.render(<App />, document.getElementById('root'))
