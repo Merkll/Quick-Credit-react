@@ -3,6 +3,7 @@ import DOM from 'react-dom';
 import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom'
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
+
 import NotFound from './components/pages/404';
 import Home from './components/pages/home';
 import Admin from "./components/pages/admin";
